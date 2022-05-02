@@ -1,0 +1,22 @@
+<ul class="list">
+    <li *ngFor="let country of countries" class="list-item">
+        <a>
+            <picture class="img-wrapper">
+                <img [src]="country.flag" alt="">
+            </picture>
+            <p class="country-name">{{ country.name }}</p>
+            <ul class="country-details">
+                <li>
+                    <span class="badge">Population:</span>{{country.population | number:'1.0':'en-US'}}
+                </li>
+                <li>
+                    <span class="badge">Region:</span>{{country.region}}
+                </li>
+                <li>
+                    <span class="badge">Capital:</span>{{country.capital}}
+                </li>
+            </ul>
+
+        </a>
+    </li>
+</ul>

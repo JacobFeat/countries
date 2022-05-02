@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./styles/settings/variables";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "BIZ UDMincho", serif;
+    font-family: "Montserrat", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
+    color: $text-color;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
