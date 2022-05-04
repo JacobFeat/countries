@@ -10,6 +10,8 @@ const BASE_URL = 'https://restcountries.com/v2';
 export class CountriesService {
   constructor(private http: HttpClient) {}
 
+  private countriesStorage = [];
+
   isNoCountry = new Subject<boolean>();
 
   all() {
