@@ -1,6 +1,13 @@
-<form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Search country</mat-label>
-      <input matInput placeholder="country">
-    </mat-form-field>
-  </form>
+<form class="countries-form">
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Search country</mat-label>
+    <input
+      name="searchCountry"
+      #searchBox
+      id="search-box"
+      (input)="emitCountry.emit(searchBox.value)"
+      matInput
+      placeholder="e.g. Andorra"
+    />
+  </mat-form-field>
+</form>

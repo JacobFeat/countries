@@ -1,33 +1,53 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
+import { catchError, Observable, of, Subject, tap } from 'rxjs';
 
 const BASE_URL = 'https://restcountries.com/v2';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CountriesService {
+  constructor(private http: HttpClient) {}
 
-
-  constructor(private http: HttpClient) { }
+  isNoCountry = new Subject<boolean>();
 
   all() {
-    return this.http.get(this.getUrl() + '/all');
+    return this.http.get<[]>(this.getUrl() + '/all');
   }
 
-  searchCountries(term: string) {
-    if(!term.trim()) {
-      return of([]);
+  searchCountriesByName(countryName: string) {
+    if (!countryName.trim()) {
+      this.isNoCountry.next(false);
+      return this.all();
     }
-    return this.http.get(this.getUrlByName() + term);
+    return this.http.get<[]>(this.getUrlWithName() + countryName).pipe(
+      tap(_ => {
+        this.isNoCountry.next(false);
+      }),
+      catchError((error) => {
+        this.isNoCountry.next(true);
+        return of([]);
+      })
+    );
+  }
+
+  searchCountriesByRegion(regionName: string) {
+    if(regionName === 'All'){
+      return this.all();
+    }
+    return this.http.get<[]>(this.getUrlWithRegion() + regionName);
   }
 
   private getUrl() {
     return BASE_URL;
-  }  
-  
-  private getUrlByName() {
+  }
+
+  private getUrlWithName() {
     return `${BASE_URL}/name/`;
+  }
+
+  private getUrlWithRegion() {
+    return `${BASE_URL}/region/`;
   }
 }

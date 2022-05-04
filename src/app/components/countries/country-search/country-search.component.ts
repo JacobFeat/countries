@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-country-search',
   templateUrl: './country-search.component.html',
-  styleUrls: ['./country-search.component.scss']
+  styleUrls: ['./country-search.component.scss'],
 })
-export class CountrySearchComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class CountrySearchComponent {
+  @Output() emitCountry = new EventEmitter<string>();
 }

@@ -1,2 +1,7 @@
-<app-country-search></app-country-search>
-<app-countries-list [countries]="countries"></app-countries-list>
+<div class="countries-wrapper">
+    <div class="countries-inputs">
+        <app-country-search (emitCountry)="searchCountriesByName($event)"></app-country-search>
+        <app-countries-filter (emitRegion)="searchCountriesByRegion($event)"></app-countries-filter>
+    </div>
+    <app-countries-list [countries]="countries" [noCountriesMsg]="noCountriesMsg"></app-countries-list>
+</div>
