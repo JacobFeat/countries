@@ -1,0 +1,28 @@
+<div class="country-wrapper">
+    <button (click)="backClicked()">Back</button>
+    <div class="details-wrapper">
+        <picture class="img-wrapper">
+            <img [src]="currentCountry['flag']" alt="{{currentCountry.name}} flag" />
+        </picture>
+        <div class="content-wrapper">
+            <h3 class="country-title">{{ currentCountry.name }}</h3>
+            <ul class="details-list">
+                <li class="details-list-item"><span class="badge">Native name:</span> {{ currentCountry.nativeName }}</li>
+                <li class="details-list-item"><span class="badge">Population:</span> {{ currentCountry.population }}</li>
+                <li class="details-list-item"><span class="badge">Region:</span> {{ currentCountry.region }}</li>
+                <li class="details-list-item"><span class="badge">Subregion:</span> {{ currentCountry.subregion }}</li>
+                <li class="details-list-item"><span class="badge">Capital:</span> {{ currentCountry.capital }}</li>
+                <li class="details-list-item"><span class="badge">Top level domain:</span> {{ currentCountry.topLevelDomain }}</li>
+                <li class="details-list-item">
+                    <span class="badge">Currencies:</span> 
+                    <ng-container *ngFor="let currency of currentCountry.currencies"> {{ currency.name }}</ng-container>
+    
+                </li>
+                <li class="details-list-item">
+                    <span class="badge">Languages:</span> 
+                    <ng-container *ngFor="let lang of currentCountry.languages"> {{ lang.name }}</ng-container>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

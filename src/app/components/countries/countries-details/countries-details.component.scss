@@ -1,0 +1,20 @@
+.country-wrapper {
+    margin: 2rem 3rem;
+}
+
+.details-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.img-wrapper {
+    max-width: 500px;
+
+    img {
+        width: 100%;
+    }
+}
+
+.details-list {
+    list-style-type: none;
+}

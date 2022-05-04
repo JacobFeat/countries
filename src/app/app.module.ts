@@ -12,6 +12,7 @@ import { CountriesComponent } from './components/countries/countries.component';
 import { CountriesListComponent } from './components/countries/countries-list/countries-list.component';
 import { CountrySearchComponent } from './components/countries/country-search/country-search.component';
 import { CountriesFilterComponent } from './components/countries/countries-filter/countries-filter.component';
+import { CountriesDetailsComponent } from './components/countries/countries-details/countries-details.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CountriesFilterComponent } from './components/countries/countries-filte
     CountriesListComponent,
     CountrySearchComponent,
     CountriesFilterComponent,
+    CountriesDetailsComponent,
   ],
   imports: [
     BrowserModule,

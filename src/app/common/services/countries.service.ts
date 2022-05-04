@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, Subject, tap } from 'rxjs';
+import { catchError, of, Subject, tap } from 'rxjs';
 
 const BASE_URL = 'https://restcountries.com/v2';
 
@@ -16,7 +16,7 @@ export class CountriesService {
     return this.http.get<[]>(this.getUrl() + '/all');
   }
 
-  searchCountriesByName(countryName: string) {
+  searchCountriesByName(countryName: string, fullNameRequired = false) {
     if (!countryName.trim()) {
       this.isNoCountry.next(false);
       return this.all();
@@ -50,4 +50,5 @@ export class CountriesService {
   private getUrlWithRegion() {
     return `${BASE_URL}/region/`;
   }
+
 }
