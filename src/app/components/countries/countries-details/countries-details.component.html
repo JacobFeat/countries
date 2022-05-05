@@ -1,5 +1,5 @@
 <div class="country-wrapper">
-    <button (click)="backClicked()">Back</button>
+    <button class="btn" (click)="backClicked()"><mat-icon class="back-arrow">keyboard_backspace</mat-icon> Back</button>
     <div class="details-wrapper">
         <picture class="img-wrapper">
             <img [src]="currentCountry['flag']" alt="{{currentCountry.name}} flag" />
@@ -8,21 +8,38 @@
             <h3 class="country-title">{{ currentCountry.name }}</h3>
             <ul class="details-list">
                 <li class="details-list-item"><span class="badge">Native name:</span> {{ currentCountry.nativeName }}</li>
-                <li class="details-list-item"><span class="badge">Population:</span> {{ currentCountry.population }}</li>
+                <li class="details-list-item"><span class="badge">Population:</span> {{ currentCountry.population | number: "1.0":"en-US"  }}</li>
                 <li class="details-list-item"><span class="badge">Region:</span> {{ currentCountry.region }}</li>
                 <li class="details-list-item"><span class="badge">Subregion:</span> {{ currentCountry.subregion }}</li>
                 <li class="details-list-item"><span class="badge">Capital:</span> {{ currentCountry.capital }}</li>
                 <li class="details-list-item"><span class="badge">Top level domain:</span> {{ currentCountry.topLevelDomain }}</li>
                 <li class="details-list-item">
                     <span class="badge">Currencies:</span> 
-                    <ng-container *ngFor="let currency of currentCountry.currencies"> {{ currency.name }}</ng-container>
+                    <ng-container *ngIf="currentCountry.currencies.length > 0; else noCurrencies">
+                        <ng-container *ngFor="let currency of currentCountry.currencies"> {{ currency.name }}</ng-container>
+                    </ng-container>
+                    <ng-template #noCurrencies> -</ng-template>
     
                 </li>
                 <li class="details-list-item">
                     <span class="badge">Languages:</span> 
-                    <ng-container *ngFor="let lang of currentCountry.languages"> {{ lang.name }}</ng-container>
+                    <ng-container *ngIf="currentCountry.languages.length > 0; else noLanguages">
+                        <ng-container *ngFor="let lang of currentCountry.languages"> {{ lang.name }}</ng-container>
+                    </ng-container>
+                    <ng-template #noLanguages> -</ng-template>
                 </li>
             </ul>
+            <div class="borders-wrapper">
+                <p class="border-label badge">Border Countries:</p>
+                <ul class="boxes-list">
+                    <ng-container *ngIf="currentCountry.borders.length > 0; else noBorders">
+                        <li *ngFor="let border of currentCountry.borders">
+                            <a class="boxes-list-item">{{ border }}</a>
+                        </li>
+                    </ng-container>
+                    <ng-template #noBorders> -</ng-template>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

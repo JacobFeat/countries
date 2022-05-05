@@ -6,7 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./countries-filter.component.scss'],
 })
 export class CountriesFilterComponent {
-  regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania', 'All'];
+  regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
   @Output() emitRegion = new EventEmitter<string>();
 
   onChange(name: string): void {

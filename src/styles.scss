@@ -4,9 +4,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
     font-family: "BIZ UDMincho", serif;
     font-family: "Montserrat", sans-serif;
     font-family: "Nunito Sans", sans-serif;
@@ -16,4 +13,45 @@ body {
 a {
     text-decoration: none;
     color: unset;
+}
+
+.badge {
+    font-weight: 700;
+}
+
+.boxes-list {
+    list-style-type: none;
+    display: flex;
+    flex: wrap;
+    gap: 0.5rem;
+}
+
+.boxes-list-item {
+    font-size: 0.75rem;
+    padding: .3rem .9rem;
+    box-shadow: 0 0 .4em 0.2em rgb(0 0 0 / 5%);
+    cursor: pointer;
+    transition: .2s ease-out;
+
+    &:hover {
+        background-color: hsl(209, 23%, 22%);
+        color: hsl(0, 0%, 100%);
+        transition: .2s ease-in;
+    }
+}
+
+.btn {
+    background-color: $elements-color;
+    color: $text-color;
+    border: none;
+    border-radius: 0.3rem;
+    padding: .5rem 1.5rem;
+    box-shadow: $box-shadow-bigger;
+    cursor: pointer;
+    transition: .2s ease-out;
+
+    &:hover {
+        transform: translateY(-.3rem);
+        transition: .2s ease-in;
+    }
 }

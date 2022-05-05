@@ -13,14 +13,14 @@ export class CountriesDetailsComponent implements OnInit {
   currentCountryName?: string | null;
 
   currentCountry: any = {
-    name: '',
-    nativeName: '',
+    name: '-',
+    nativeName: '-',
     population: 0,
-    region: '',
-    subregion: '',
-    capital: '',
-    topLevelDomain: '',
-    currencies: '',
+    region: '-',
+    subregion: '-',
+    capital: '-',
+    topLevelDomain: '-',
+    currencies: [],
     languages: '',
     borders: [],
     flag: ''
@@ -31,7 +31,7 @@ export class CountriesDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe( params => {
       this.currentCountryName = params.get('name');
-      console.log(params.get('name'));
+      console.log(params);
       
       if(this.currentCountryName){
         this.countriesServices.searchCountriesByName(this.currentCountryName)
@@ -41,7 +41,8 @@ export class CountriesDetailsComponent implements OnInit {
                   this.currentCountry[key] = country[0][key];
                 }
               }
-              console.log(this.currentCountry);
+              console.log(country[0]);
+              
           })
       }
       

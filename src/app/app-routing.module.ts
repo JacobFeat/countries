@@ -7,7 +7,8 @@ import { CustomRouteReuseStrategy } from './common/services/custom-route-reuse-s
 const routes: Routes = [
   { path: 'countries', component: CountriesComponent },
   { path: 'countries/:name', component: CountriesDetailsComponent },
-  { path: '**', redirectTo: '/' },
+  { path: 'countries/region/:regionName', component: CountriesComponent },
+  { path: '**', redirectTo: '/countries' },
 ];
 
 @NgModule({

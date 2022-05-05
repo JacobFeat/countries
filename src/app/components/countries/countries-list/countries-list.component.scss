@@ -14,7 +14,7 @@
     width: 240px;
     height: 300px;
     border-radius: 6px;
-    box-shadow: $box-shadow;
+    box-shadow: $box-shadow-bigger;
     overflow: hidden;
 
     a {
@@ -52,6 +52,5 @@
 }
 
 .badge {
-    font-weight: 700;
     margin-right: 0.2rem;
 }
