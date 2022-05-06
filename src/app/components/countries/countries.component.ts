@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { CountriesService } from 'src/app/common/services/countries.service';
 
@@ -12,11 +13,18 @@ export class CountriesComponent implements OnInit {
   countries?: any;
   noCountriesMsg?: boolean;
 
-  constructor(private countriesService: CountriesService) {}
+  constructor(private countriesService: CountriesService, private router: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.fetchCountries();
-    this.fetchNoCountriesHandling();
+    this.router.params
+      .subscribe( params => {
+        if(params['regionName'] && params['regionName'] !== 'all'){
+          this.searchCountriesByRegion(params['regionName']);
+        } else {
+          this.fetchCountries();
+          this.fetchNoCountriesHandling();
+        }
+      })
   }
 
   fetchCountries(): void {

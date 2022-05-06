@@ -31,7 +31,6 @@ export class CountriesDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe( params => {
       this.currentCountryName = params.get('name');
-      console.log(params);
       
       if(this.currentCountryName){
         this.countriesServices.searchCountriesByName(this.currentCountryName)
@@ -41,8 +40,6 @@ export class CountriesDetailsComponent implements OnInit {
                   this.currentCountry[key] = country[0][key];
                 }
               }
-              console.log(country[0]);
-              
           })
       }
       
