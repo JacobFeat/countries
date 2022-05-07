@@ -1,14 +1,14 @@
 @import "../../../../styles/settings/variables";
 
 .list {
-    // display: flex;
-    // justify-content: space-between;
-    // flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 50px;
-    display: grid;
-    
-    grid-template-columns: repeat(auto-fit, 240px);
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, 240px);
     list-style-type: none;
+    background-color: var(--background-color);
 }
 
 .list-item {
@@ -19,6 +19,8 @@
     border-radius: 6px;
     box-shadow: $box-shadow-bigger;
     overflow: hidden;
+    background-color: var(--elements-color);
+
 
     a {
         width: 100%;

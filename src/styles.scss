@@ -7,7 +7,7 @@
     font-family: "BIZ UDMincho", serif;
     font-family: "Montserrat", sans-serif;
     font-family: "Nunito Sans", sans-serif;
-    color: $text-color;
+    color: var(--text-color);
 }
 
 a {
@@ -41,8 +41,8 @@ a {
 }
 
 .btn {
-    background-color: $elements-color;
-    color: $text-color;
+    background-color: var(--elements-color);
+    color: var(--text-color);
     border: none;
     border-radius: 0.3rem;
     padding: .5rem 1.5rem;

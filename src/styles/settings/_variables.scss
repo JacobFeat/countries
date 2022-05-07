@@ -1,12 +1,27 @@
-// body { 
-    $text-color: hsl(200, 15%, 8%);
-    $input-color: hsl(0, 0%, 52%);
+// :root{
+    // $text-color: hsl(200, 15%, 8%);
+    // $input-color: hsl(0, 0%, 52%);
     $background-color: hsl(0, 0%, 98%);
     $elements-color: hsl(0, 0%, 100%);
 
-    $box-shadow-bigger: 0 0 1em 0.2em rgb(0 0 0 / 10%);
-// }
+    // }
+    // }
+    
+$box-shadow-bigger: 0 0 1em 0.2em rgb(0 0 0 / 10%);
 
+html {
+    --text-color: hsl(200, 15%, 8%);
+    --input-color: hsl(0, 0%, 52%);
+    --background-color: hsl(0, 0%, 98%);
+    --elements-color: hsl(0, 0%, 100%);
+}
+
+html[data-theme="dark"] {
+    --text-color: hsl(0, 0%, 100%);
+    --input-color: hsl(0, 0%, 52%);
+    --background-color: hsl(207, 26%, 17%);
+    --elements-color: hsl(209, 23%, 22%);
+}
 
 
 body {
