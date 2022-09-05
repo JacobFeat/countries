@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CountriesService } from 'src/app/common/services/countries.service';
 import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { Country } from 'src/app/common/models/country';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs';
+import { Spinner } from 'src/app/common/enums/spinner.enum';
+import { Country, NativeName } from 'src/app/common/models/country';
+import { CountriesService } from 'src/app/common/services/countries.service';
 
 @Component({
   selector: 'app-countries-details',
@@ -11,22 +13,22 @@ import { Country } from 'src/app/common/models/country';
   styleUrls: ['./countries-details.component.scss'],
 })
 export class CountriesDetailsComponent implements OnInit {
-  color = 'primary';
-  mode: ProgressSpinnerMode = 'indeterminate';
+  color = Spinner.Primary;
+  mode: ProgressSpinnerMode = Spinner.Indeterminate;
   value = 50;
 
   spinnerVisible = true;
 
   currentCountryName?: string | null;
 
-  currentCountry: Country = {
+  currentCountry: any = {
     name: {},
     nativeName: '-',
     population: 0,
     region: '-',
     subregion: '-',
-    capital: '-',
-    topLevelDomain: '-',
+    capital: [] as any[],
+    tld: [],
     currencies: [],
     languages: '',
     borders: [],
@@ -41,23 +43,46 @@ export class CountriesDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params) => {
       this.currentCountryName = params.get('name');
       if (this.currentCountryName) {
-        this.countriesServices.searchCountriesByName(this.currentCountryName)
-          .subscribe(country => {
+        this.countriesServices
+          .searchCountriesByName(this.currentCountryName)
+          .pipe(
+            map((countries) => countries[0]),
+            map((country: Country) => {
+              return {
+                name: country.name,
+                nativeName: this.getNativeName(country.name.nativeName),
+                population: country.population,
+                region: country.region,
+                subregion: country.subregion,
+                capital: country.capital,
+                tld: country.tld,
+                currencies: country.currencies,
+                languages: country.languages,
+                borders: country.borders,
+                flags: country.flags,
+              } as Country;
+            })
+          )
+          .subscribe((country) => {
             if (country) this.spinnerVisible = false;
+            console.log(country);
             for (let key in this.currentCountry) {
-              if (country[0][key]) {
-                this.currentCountry[key as keyof Country] = country[0][key];
-              }
+              this.currentCountry[key as keyof Country] =
+                country[key as keyof Country];
             }
-          })
+          });
       }
-    })
+    });
   }
 
   backClicked() {
     this.location.back();
+  }
+
+  private getNativeName(nativeName: NativeName) {
+    return Object.values(nativeName)[0]['common'];
   }
 }

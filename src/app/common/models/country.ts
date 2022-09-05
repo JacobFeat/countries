@@ -1,13 +1,13 @@
 export interface Country {
     name: Names;
-    nativeName: string;
+    nativeName: NativeName;
     population: number;
     region: string;
     subregion: string;
-    capital: string;
-    topLevelDomain: string;
-    currencies: string[];
-    languages: string;
+    capital: string[];
+    tld: string[];
+    currencies: any[];
+    languages: any;
     borders: string[];
     flags: Flags;
 }
@@ -21,4 +21,9 @@ export interface Names {
     common?: string;
     official?: string;
     nativeName?: any;
+}
+
+export interface NativeName {
+  common: string;
+  official: string;
 }

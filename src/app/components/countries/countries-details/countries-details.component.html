@@ -15,8 +15,7 @@
         <ul class="details-list">
           <li class="details-list-item">
             <span class="badge">Native name:</span>
-              {{ currentCountry.name.nativeName?.rar?.official }}
-            <!-- </pre> -->
+              {{ currentCountry.nativeName }}
           </li>
           <li class="details-list-item">
             <span class="badge">Population:</span>
@@ -33,29 +32,7 @@
           </li>
           <li class="details-list-item">
             <span class="badge">Top level domain:</span>
-            {{ currentCountry.topLevelDomain }}
-          </li>
-          <li class="details-list-item">
-            <span class="badge">Currencies:</span>
-            <ng-container
-              *ngIf="currentCountry.currencies.length > 0; else noCurrencies"
-            >
-              <ng-container *ngFor="let currency of currentCountry.currencies">
-                {{ currency }}</ng-container
-              >
-            </ng-container>
-            <ng-template #noCurrencies> -</ng-template>
-          </li>
-          <li class="details-list-item">
-            <span class="badge">Languages:</span>
-            <ng-container
-              *ngIf="currentCountry.languages.length > 0; else noLanguages"
-            >
-              <ng-container *ngFor="let lang of currentCountry.languages">
-                {{ lang }}</ng-container
-              >
-            </ng-container>
-            <ng-template #noLanguages> -</ng-template>
+            {{ currentCountry.tld }}
           </li>
         </ul>
         <div class="borders-wrapper">
