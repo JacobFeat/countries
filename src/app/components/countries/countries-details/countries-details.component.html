@@ -15,7 +15,7 @@
         <ul class="details-list">
           <li class="details-list-item">
             <span class="badge">Native name:</span>
-              {{ currentCountry.nativeName }}
+            {{ currentCountry.nativeName }}
           </li>
           <li class="details-list-item">
             <span class="badge">Population:</span>
@@ -39,10 +39,10 @@
           <p class="border-label badge">Border Countries:</p>
           <ul class="boxes-list">
             <ng-container
-              *ngIf="currentCountry.borders.length > 0; else noBorders"
+              *ngIf="currentCountry.borders?.length > 0; else noBorders"
             >
-              <li *ngFor="let border of currentCountry.borders">
-                <a class="boxes-list-item">{{ border }}</a>
+              <li class="boxes-list-item" *ngFor="let border of currentCountry.borders">
+                <a [routerLink]="['/countries', border]">{{ border }}</a>
               </li>
             </ng-container>
             <ng-template #noBorders> -</ng-template>

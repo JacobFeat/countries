@@ -18,12 +18,12 @@ export class CountriesService {
     return this.http.get<[]>(`${this.getUrl()}/all`);
   }
 
-  searchCountriesByName(countryName: string, fullNameRequired = false) {
-    if (!countryName.trim()) {
+  searchCountriesByCode(countryCode: string) {
+    if (!countryCode.trim()) {
       this.isNoCountry.next(false);
       return this.all();
     }
-    return this.http.get<[]>(this.getUrlWithName() + countryName).pipe(
+    return this.http.get<[]>(this.getUrlWithCode() + countryCode).pipe(
       tap((_) => {
         this.isNoCountry.next(false);
       }),
@@ -45,8 +45,8 @@ export class CountriesService {
     return BASE_URL;
   }
 
-  private getUrlWithName() {
-    return `${BASE_URL}/name/`;
+  private getUrlWithCode() {
+    return `${BASE_URL}/alpha/`;
   }
 
   private getUrlWithRegion() {

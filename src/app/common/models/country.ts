@@ -10,6 +10,7 @@ export interface Country {
     languages: any;
     borders: string[];
     flags: Flags;
+    cioc?: string;
 }
 
 export interface Flags {

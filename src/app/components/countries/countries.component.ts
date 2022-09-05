@@ -49,9 +49,9 @@ export class CountriesComponent implements OnInit {
       .subscribe((msg) => (this.noCountriesMsg = msg));
   }
 
-  searchCountriesByName(countryName: string): void {
+  searchCountriesByName(countryCode: string): void {
     this.countriesService
-      .searchCountriesByName(countryName)
+      .searchCountriesByCode(countryCode)
       .pipe(catchError((err) => of([])))
       .subscribe((countries) => {
         if (countries) this.isSpinnerVisible = false;

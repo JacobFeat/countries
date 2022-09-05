@@ -1,61 +1,67 @@
 @import "./styles/settings/variables";
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "BIZ UDMincho", serif;
-    font-family: "Montserrat", sans-serif;
-    font-family: "Nunito Sans", sans-serif;
-    color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "BIZ UDMincho", serif;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--text-color);
 }
 
 a {
-    text-decoration: none;
-    color: unset;
+  text-decoration: none;
+  color: unset;
 }
 
 .badge {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .boxes-list {
-    list-style-type: none;
-    display: flex;
-    flex: wrap;
-    gap: 0.5rem;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: 360px;
 }
 
 .boxes-list-item {
-    font-size: 0.75rem;
-    padding: .3rem .9rem;
-    box-shadow: 0 0 .4em 0.2em rgb(0 0 0 / 5%);
-    cursor: pointer;
-    transition: .2s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.9rem;
+  box-shadow: 0 0 0.4em 0.2em rgb(0 0 0 / 5%);
+  cursor: pointer;
+  transition: 0.2s ease-out;
+  min-width: 56px;
+  min-height: 28px;
 
-    &:hover {
-        background-color: hsl(209, 23%, 22%);
-        color: hsl(0, 0%, 100%);
-        transition: .2s ease-in;
-    }
+  &:hover {
+    background-color: hsl(209, 23%, 22%);
+    color: hsl(0, 0%, 100%);
+    transition: 0.2s ease-in;
+  }
 }
 
 .btn {
-    background-color: var(--elements-color);
-    color: var(--text-color);
-    border: none;
-    border-radius: 0.3rem;
-    padding: .5rem 1.5rem;
-    box-shadow: $box-shadow-bigger;
-    cursor: pointer;
-    transition: .2s ease-out;
+  background-color: var(--elements-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.5rem 1.5rem;
+  box-shadow: $box-shadow-bigger;
+  cursor: pointer;
+  transition: 0.2s ease-out;
 
-    &:hover {
-        transform: translateY(-.3rem);
-        transition: .2s ease-in;
-    }
+  &:hover {
+    transform: translateY(-0.3rem);
+    transition: 0.2s ease-in;
+  }
 }
 
 .mat-progress-spinner {
-    margin: 0 auto;
+  margin: 0 auto;
 }

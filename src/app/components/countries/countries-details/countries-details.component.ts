@@ -19,7 +19,7 @@ export class CountriesDetailsComponent implements OnInit {
 
   spinnerVisible = true;
 
-  currentCountryName?: string | null;
+  currentCountryCode?: string | null;
 
   currentCountry: any = {
     name: {},
@@ -38,16 +38,15 @@ export class CountriesDetailsComponent implements OnInit {
   constructor(
     private countriesServices: CountriesService,
     private route: ActivatedRoute,
-    private router: Router,
     private location: Location
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.currentCountryName = params.get('name');
-      if (this.currentCountryName) {
+      this.currentCountryCode = params.get('cioc');
+      if (this.currentCountryCode) {
         this.countriesServices
-          .searchCountriesByName(this.currentCountryName)
+          .searchCountriesByCode(this.currentCountryCode)
           .pipe(
             map((countries) => countries[0]),
             map((country: Country) => {
@@ -68,7 +67,6 @@ export class CountriesDetailsComponent implements OnInit {
           )
           .subscribe((country) => {
             if (country) this.spinnerVisible = false;
-            console.log(country);
             for (let key in this.currentCountry) {
               this.currentCountry[key as keyof Country] =
                 country[key as keyof Country];
