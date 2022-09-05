@@ -3,5 +3,5 @@
         <app-country-search (emitCountry)="searchCountriesByName($event)"></app-country-search>
         <app-countries-filter (emitRegion)="searchCountriesByRegion($event)"></app-countries-filter>
     </div>
-    <app-countries-list [countries]="countries" [noCountriesMsg]="noCountriesMsg"></app-countries-list>
+    <app-countries-list [countries]="countries" [noCountriesMsg]="noCountriesMsg" [isSpinnerVisible]="isSpinnerVisible"></app-countries-list>
 </div>

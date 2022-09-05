@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { SpinnerService } from 'src/app/common/services/spinner.service';
 
 @Component({
   selector: 'app-countries-filter',
@@ -6,10 +7,16 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./countries-filter.component.scss'],
 })
 export class CountriesFilterComponent {
+  isSpinnerVisible!: boolean;
+
   regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
   @Output() emitRegion = new EventEmitter<string>();
 
+  constructor(private spinnerService: SpinnerService) {
+  }
+
   onChange(name: string): void {
+    this.spinnerService.turnOnSpinner();
     this.emitRegion.emit(name);
   }
 }

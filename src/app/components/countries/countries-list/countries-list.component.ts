@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { Country } from 'src/app/common/models/country';
 
 @Component({
   selector: 'app-countries-list',
@@ -6,7 +8,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./countries-list.component.scss'],
 })
 export class CountriesListComponent {
-  @Input() countries!: [];
+  @Input() countries!: Country[];
   @Input() noCountriesMsg?: boolean;
+  @Input() isSpinnerVisible?: boolean;
 
+  color = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 50;
 }

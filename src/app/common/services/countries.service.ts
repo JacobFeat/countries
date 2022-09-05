@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, of, Subject, tap } from 'rxjs';
 
-const BASE_URL = 'https://restcountries.com/v2';
+const BASE_URL = 'https://restcountries.com/v3.1';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,7 @@ export class CountriesService {
   isNoCountry = new Subject<boolean>();
 
   all() {
-    return this.http.get<[]>(this.getUrl() + '/all');
+    return this.http.get<[]>(`${this.getUrl()}/all`);
   }
 
   searchCountriesByName(countryName: string, fullNameRequired = false) {
@@ -24,7 +24,7 @@ export class CountriesService {
       return this.all();
     }
     return this.http.get<[]>(this.getUrlWithName() + countryName).pipe(
-      tap(_ => {
+      tap((_) => {
         this.isNoCountry.next(false);
       }),
       catchError((error) => {
@@ -35,7 +35,7 @@ export class CountriesService {
   }
 
   searchCountriesByRegion(regionName: string) {
-    if(regionName === 'All'){
+    if (regionName === 'All') {
       return this.all();
     }
     return this.http.get<[]>(this.getUrlWithRegion() + regionName);
@@ -52,5 +52,4 @@ export class CountriesService {
   private getUrlWithRegion() {
     return `${BASE_URL}/region/`;
   }
-
 }

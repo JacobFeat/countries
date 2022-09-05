@@ -1,21 +1,34 @@
-<ul *ngIf="!noCountriesMsg; else noCountries" class="list">
+<ng-container *ngIf="!isSpinnerVisible; else spinnerBlock">
+  <ul *ngIf="!noCountriesMsg; else noCountries" class="list">
   <li *ngFor="let country of countries" class="list-item">
-    <a [routerLink]="['/countries', country['name']]">
+    <a [routerLink]="['/countries', country?.name?.common]">
       <picture class="img-wrapper">
-        <img [src]="country['flag']" alt="" />
+        <img [src]="country?.flags?.png" alt="" />
       </picture>
-      <p class="country-name">{{ country["name"] }}</p>
+      <p class="country-name">{{ country?.name?.common }}</p>
       <ul class="country-details">
         <li>
           <span class="badge">Population:</span
-          >{{ country["population"] | number: "1.0":"en-US" }}
-        </li>
-        <li><span class="badge">Region:</span>{{ country["region"] }}</li>
-        <li><span class="badge">Capital:</span>{{ country["capital"] }}</li>
-      </ul>
-    </a>
-  </li>
-</ul>
+            >{{ country["population"] | number: "1.0":"en-US" }}
+          </li>
+          <li><span class="badge">Region:</span>{{ country["region"] }}</li>
+          <li><span class="badge">Capital:</span>{{ country["capital"] }}</li>
+        </ul>
+      </a>
+    </li>
+  </ul>
+</ng-container>
+
+<ng-template #spinnerBlock>
+  <mat-progress-spinner
+    class="example-margin"
+    [color]="color"
+    [mode]="mode"
+    [value]="value"
+  >
+  </mat-progress-spinner>
+</ng-template>
+
 <ng-template #noCountries>
   <h2>No countries matched</h2>
 </ng-template>
