@@ -1,4 +1,5 @@
 @import "./styles/settings/variables";
+@import "./styles/common";
 
 * {
   margin: 0;
@@ -28,9 +29,7 @@ a {
 }
 
 .boxes-list-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexCenterBoth;
   font-size: 0.75rem;
   padding: 0.3rem 0.9rem;
   box-shadow: 0 0 0.4em 0.2em rgb(0 0 0 / 5%);

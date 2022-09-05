@@ -1,12 +1,12 @@
+@import "../../../../styles/_common";
+
 .country-wrapper {
   margin: 5rem 3rem;
 }
 
 .details-wrapper {
-  display: flex;
+  @include flexCenterBoth;
   gap: 100px;
-  align-items: center;
-  justify-content: center;
   margin-top: 4rem;
 }
 
@@ -50,8 +50,6 @@
 }
 
 .btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexCenterBoth;
   gap: 0.5rem;
 }
