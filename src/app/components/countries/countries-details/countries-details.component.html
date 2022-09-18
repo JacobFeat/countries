@@ -41,8 +41,8 @@
             <ng-container
               *ngIf="currentCountry.borders?.length > 0; else noBorders"
             >
-              <li class="boxes-list-item" *ngFor="let border of currentCountry.borders">
-                <a [routerLink]="['/countries', border]">{{ border }}</a>
+              <li [routerLink]="['/countries', border]" class="boxes-list-item" *ngFor="let border of currentCountry.borders">
+                <a>{{ border }}</a>
               </li>
             </ng-container>
             <ng-template #noBorders> -</ng-template>

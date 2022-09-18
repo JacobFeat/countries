@@ -10,13 +10,10 @@ export class CountriesFilterComponent {
   isSpinnerVisible!: boolean;
 
   regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
-  @Output() emitRegion = new EventEmitter<string>();
 
-  constructor(private spinnerService: SpinnerService) {
-  }
+  constructor(private spinnerService: SpinnerService) {}
 
-  onChange(name: string): void {
+  onChange(): void {
     this.spinnerService.turnOnSpinner();
-    this.emitRegion.emit(name);
   }
 }
