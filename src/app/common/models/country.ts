@@ -11,6 +11,7 @@ export interface Country {
     borders: string[];
     flags: Flags;
     cioc?: string;
+    ccn3?: string;
 }
 
 export interface Flags {
