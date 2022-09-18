@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, of } from 'rxjs';
+import { Regions } from 'src/app/common/enums/regions';
 import { CountriesService } from 'src/app/common/services/countries.service';
 import { SpinnerService } from 'src/app/common/services/spinner.service';
 
@@ -12,6 +13,7 @@ import { SpinnerService } from 'src/app/common/services/spinner.service';
 export class CountriesComponent implements OnInit {
   countries?: any;
   noCountriesMsg?: boolean;
+  currentRegion?: Regions;
 
   isSpinnerVisible!: boolean;
 
@@ -23,6 +25,7 @@ export class CountriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.params.subscribe((params) => {
+      this.currentRegion = params['regionName'];
       if (params['regionName'] && params['regionName'] !== 'all') {
         this.searchCountriesByRegion(params['regionName']);
       } else {

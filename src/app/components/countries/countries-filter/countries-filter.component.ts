@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Regions } from 'src/app/common/enums/regions';
 import { SpinnerService } from 'src/app/common/services/spinner.service';
 
 @Component({
@@ -9,7 +10,16 @@ import { SpinnerService } from 'src/app/common/services/spinner.service';
 export class CountriesFilterComponent {
   isSpinnerVisible!: boolean;
 
-  regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+  regions = [
+    Regions.All,
+    Regions.Africa,
+    Regions.Americas,
+    Regions.Asia,
+    Regions.Europe,
+    Regions.Oceania,
+  ];
+
+  @Input() currentRegion?: Regions;
 
   constructor(private spinnerService: SpinnerService) {}
 

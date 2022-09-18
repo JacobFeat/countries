@@ -1,6 +1,10 @@
 <mat-form-field appearance="fill">
   <mat-label>Filter by Region</mat-label>
-  <mat-select #select (valueChange)="onChange()">
+  <mat-select
+    #select
+    (valueChange)="onChange()"
+    [value]="currentRegion | titlecase"
+  >
     <mat-option
       *ngFor="let region of regions"
       [value]="region"
