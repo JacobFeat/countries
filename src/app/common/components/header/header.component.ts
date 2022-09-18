@@ -8,21 +8,30 @@ import { Themes } from '../../enums/themes';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  theme: Themes = Themes.Dark;
+  theme: Themes =
+    (window.localStorage.getItem('themeMode') as Themes) || Themes.Dark;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initializeTheme();
+  }
+
+  private initializeTheme(): void {
+    this.renderer.addClass(this.document.body, this.theme);
+  }
 
   protected changeThemeMode(): void {
-    this.document.body.classList.replace(
-      this.theme,
-      this.theme === Themes.Light
-        ? (this.theme = Themes.Dark)
-        : (this.theme = Themes.Light)
-    );
+    this.theme === Themes.Light
+      ? this.replaceBodyClassAndStorage(Themes.Dark)
+      : this.replaceBodyClassAndStorage(Themes.Light);
+  }
+
+  private replaceBodyClassAndStorage(themeName: Themes): void {
+    window.localStorage.setItem('themeMode', themeName);
+    this.document.body.classList.replace(this.theme, (this.theme = themeName));
   }
 }
