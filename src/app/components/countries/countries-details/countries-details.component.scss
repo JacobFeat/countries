@@ -53,3 +53,29 @@
   @include flexCenterBoth;
   gap: 0.5rem;
 }
+
+.boxes-list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: 360px;
+}
+
+.boxes-list-item {
+  @include flexCenterBoth;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.9rem;
+  box-shadow: 0 0 0.4em 0.2em rgb(0 0 0 / 5%);
+  cursor: pointer;
+  transition: 0.2s ease-out;
+  min-width: 56px;
+  min-height: 28px;
+  background-color: var(--box-bg-color);
+
+  &:hover {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: 0.2s ease-in;
+  }
+}

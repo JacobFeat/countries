@@ -1,2 +1,12 @@
 @import "../../../../styles/settings/variables";
 
+:host {
+  display: flex;
+  flex: 400px 0 1;
+}
+
+.countries-form,
+.seacher-field,
+mat-form-field-wrapper {
+  min-width: 100%;
+}

@@ -1,5 +1,6 @@
 @import "./styles/settings/variables";
 @import "./styles/common";
+@import "./styles/angular-material/angular-material";
 
 * {
   margin: 0;
@@ -11,6 +12,20 @@
   color: var(--text-color);
 }
 
+.light-theme {
+  --box-bg-color: hsl(0, 0%, 100%);
+  --text-color: hsl(200, 15%, 8%);
+  --input-color: hsl(0, 0%, 52%);
+  --bg-color: hsl(0, 0%, 98%);
+}
+
+.dark-theme {
+  --box-bg-color: hsl(209, 23%, 22%);
+  --text-color: hsl(0, 0%, 100%);
+  --input-color: hsl(0, 0%, 52%);
+  --bg-color: hsl(207, 26%, 17%);
+}
+
 a {
   text-decoration: none;
   color: unset;
@@ -20,33 +35,8 @@ a {
   font-weight: 700;
 }
 
-.boxes-list {
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  max-width: 360px;
-}
-
-.boxes-list-item {
-  @include flexCenterBoth;
-  font-size: 0.75rem;
-  padding: 0.3rem 0.9rem;
-  box-shadow: 0 0 0.4em 0.2em rgb(0 0 0 / 5%);
-  cursor: pointer;
-  transition: 0.2s ease-out;
-  min-width: 56px;
-  min-height: 28px;
-
-  &:hover {
-    background-color: hsl(209, 23%, 22%);
-    color: hsl(0, 0%, 100%);
-    transition: 0.2s ease-in;
-  }
-}
-
 .btn {
-  background-color: var(--elements-color);
+  background-color: var(--box-bg-color);
   color: var(--text-color);
   border: none;
   border-radius: 0.3rem;
@@ -56,11 +46,8 @@ a {
   transition: 0.2s ease-out;
 
   &:hover {
+    color: var(--text-color);
     transform: translateY(-0.3rem);
     transition: 0.2s ease-in;
   }
-}
-
-.mat-progress-spinner {
-  margin: 0 auto;
 }

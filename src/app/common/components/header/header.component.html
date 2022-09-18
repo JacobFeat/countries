@@ -1,6 +1,6 @@
-<header> 
+<header>
     <h1> <a [routerLink]="['/countries']">Where is the world?</a></h1>
-    <button class="btn-theme-picker">
+    <button class="btn-theme-picker" (click)="changeThemeMode()">
         <mat-icon>invert_colors</mat-icon>
         <p>Dark Mode</p>
     </button>
