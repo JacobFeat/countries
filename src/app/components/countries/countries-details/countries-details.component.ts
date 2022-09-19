@@ -92,8 +92,6 @@ export class CountriesDetailsComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.subs.forEach((sub) => {
-      console.log(sub);
-
       sub.unsubscribe();
     });
   }
