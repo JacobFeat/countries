@@ -9,7 +9,7 @@ import { Country } from 'src/app/common/models/country';
 })
 export class CountriesListComponent {
   @Input() countries!: Country[];
-  @Input() noCountriesMsg?: boolean;
+  @Input() isAnyCountry?: boolean;
   @Input() isSpinnerVisible?: boolean;
 
   color = 'primary';

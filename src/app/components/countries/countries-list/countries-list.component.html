@@ -1,5 +1,5 @@
 <ng-container *ngIf="!isSpinnerVisible; else spinnerBlock">
-  <ul *ngIf="!noCountriesMsg; else noCountries" class="list">
+  <ul *ngIf="isAnyCountry; else noCountries" class="list">
     <li *ngFor="let country of countries" class="list-item">
       <a [routerLink]="['/countries', country.cioc || country.ccn3]">
         <picture class="img-wrapper">

@@ -34,6 +34,10 @@ export class CountriesService {
     );
   }
 
+  searchCountriesByName(countryName: string) {
+    return this.http.get(this.getUrlToSearch() + countryName);
+  }
+
   searchCountriesByRegion(regionName: string) {
     if (regionName === 'All') {
       return this.all();
@@ -51,5 +55,9 @@ export class CountriesService {
 
   private getUrlWithRegion() {
     return `${BASE_URL}/region/`;
+  }
+
+  private getUrlToSearch() {
+    return `${BASE_URL}/name/`;
   }
 }

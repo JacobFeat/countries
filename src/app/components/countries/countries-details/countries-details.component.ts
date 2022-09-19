@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, map, tap } from 'rxjs';
+import { filter, map, Subscription, tap } from 'rxjs';
 import { Spinner } from 'src/app/common/enums/spinner.enum';
 import { Country, NativeName } from 'src/app/common/models/country';
 import { CountriesService } from 'src/app/common/services/countries.service';
@@ -23,7 +23,7 @@ export class CountriesDetailsComponent implements OnInit {
 
   currentCountry: any = {
     name: {},
-    nativeName: '-',
+    nativeName: { common: '', official: '' },
     population: 0,
     region: '-',
     subregion: '-',
@@ -35,6 +35,8 @@ export class CountriesDetailsComponent implements OnInit {
     flags: {},
   };
 
+  subs: Subscription[] = [];
+
   constructor(
     private countriesServices: CountriesService,
     private route: ActivatedRoute,
@@ -42,24 +44,26 @@ export class CountriesDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      this.currentCountryCode = params.get('cioc');
-      if (this.currentCountryCode) {
-        this.countriesServices
-          .searchCountriesByCode(this.currentCountryCode)
-          .pipe(
-            map((countries) => countries[0]),
-            map((country: Country) => this.adaptCountry(country)),
-          )
-          .subscribe((country) => {
-            if (country) this.spinnerVisible = false;
-            for (let key in this.currentCountry) {
-              this.currentCountry[key as keyof Country] =
-                country[key as keyof Country];
-            }
-          });
-      }
-    });
+    this.subs.push(
+      this.route.paramMap.subscribe((params) => {
+        this.currentCountryCode = params.get('cioc');
+        if (this.currentCountryCode) {
+          this.countriesServices
+            .searchCountriesByCode(this.currentCountryCode)
+            .pipe(
+              map((countries) => countries[0]),
+              map((country: Country) => this.adaptCountry(country))
+            )
+            .subscribe((country) => {
+              if (country) this.spinnerVisible = false;
+              for (let key in this.currentCountry) {
+                this.currentCountry[key as keyof Country] =
+                  country[key as keyof Country];
+              }
+            });
+        }
+      })
+    );
   }
 
   backClicked() {
@@ -84,5 +88,13 @@ export class CountriesDetailsComponent implements OnInit {
       borders: country.borders,
       flags: country.flags,
     };
+  }
+
+  ngOnDestroy(): void {
+    this.subs.forEach((sub) => {
+      console.log(sub);
+
+      sub.unsubscribe();
+    });
   }
 }
