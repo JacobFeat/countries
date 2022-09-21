@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { Country } from 'src/app/common/models/country';
+import { Country } from 'src/app/components/countries/models/country';
 
 @Component({
   selector: 'app-countries-list',

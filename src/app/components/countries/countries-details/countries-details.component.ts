@@ -4,7 +4,7 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, map, Subscription, tap } from 'rxjs';
 import { Spinner } from 'src/app/common/enums/spinner.enum';
-import { Country, NativeName } from 'src/app/common/models/country';
+import { Country, NativeName } from 'src/app/components/countries/models/country';
 import { CountriesService } from 'src/app/common/services/countries.service';
 
 @Component({

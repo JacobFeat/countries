@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, EMPTY, of, Subscription, tap } from 'rxjs';
-import { Regions } from 'src/app/common/enums/regions';
+import { Regions } from 'src/app/components/countries/enums/regions';
 import { CountriesService } from 'src/app/common/services/countries.service';
 import { SpinnerService } from 'src/app/common/services/spinner.service';
 

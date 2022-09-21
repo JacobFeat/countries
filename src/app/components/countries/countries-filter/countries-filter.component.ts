@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Regions } from 'src/app/common/enums/regions';
+import { Regions } from 'src/app/components/countries/enums/regions';
 import { SpinnerService } from 'src/app/common/services/spinner.service';
 
 @Component({
