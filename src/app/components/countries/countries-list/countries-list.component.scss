@@ -1,4 +1,5 @@
 @import "../../../../styles/settings/variables";
+@import "../../../../styles/settings/_configuration";
 
 .list {
     display: flex;
@@ -56,4 +57,10 @@
 
 .badge {
     margin-right: 0.2rem;
+}
+
+@media screen and (max-width: $tablet-min) {
+  .list {
+    justify-content: center;
+  }
 }
